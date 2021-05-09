@@ -81,6 +81,6 @@ mongoose.connect(process.env.DB_URL,
  //seedDB();
 
 
-    app.listen(3000,()=>{
+    app.listen(process.env.PORT || 3000,()=>{
         console.log("Listening on Port No. 3000");
     })
