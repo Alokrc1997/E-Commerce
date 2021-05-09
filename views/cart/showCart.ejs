@@ -1,0 +1,71 @@
+<%- include("../partials/header") %> 
+<style>
+    body{
+        background-color: #feeafa;
+    }
+</style>
+<link rel="stylesheet" href="/css/star.css">
+<%- include("../partials/navbar") %> 
+
+
+
+<div class="container " style="margin-top: 6.5rem;" >
+    <%- include('../partials/flash') %>  
+  
+
+  
+    <div class="row">
+
+        <div class="col-lg-8" >
+            
+            <div class="card mb-3" style="width: 100%">
+                <h4 class="ps-3 pt-2">My Cart (<%= user.cart.length %>)</h4>
+                <div class="row g-0">
+                    <% amount=0 %> 
+                    <% for(item of user.cart){ %> 
+                        <hr>
+                        <%amount+=item.price %> 
+                         
+                  <div class="col-md-4">
+                    <img class="img-fluid" src="<%= item.image %> " alt="..." style="width: 180px;height: 160px;">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= item.name %></h5>
+                      <p class="card-text">&#8377 <%= item.price %></p>
+                      <form action="/user/<%= currentUser._id %>/cart/<%= item._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-sm">remove</button>
+                    </form>
+                    </div>
+                   
+                  </div>
+                  
+                  <% } %> 
+                </div>
+              </div>
+        </div>
+
+
+        <div class="col-lg-4" >
+            
+            <div class="card" style="width: 100%;">
+                <div class="card-header">
+                  PRICE DETAILS
+                </div>
+                <ul class="list-group list-group-flush">
+
+                    <% for(item of user.cart){ %> 
+                  <li class="list-group-item"><%= item.name %> -  &#8377 <%= item.price %></li>
+                  <% } %> 
+
+                  <li class="list-group-item"><strong>Total Amount - &#8377 <%= amount %></strong> </li>
+                </ul>
+                
+              </div>
+              <button class="btn btn-success m-4">Proceed to Pay</button>
+        </div>
+        
+    </div>
+
+</div>
+<%- include('../partials/footer') %> 
