@@ -4,6 +4,11 @@ const product=require('../models/product');
 const Review=require('../models/review');
 const {isLogedIn}=require('../middleware');
 
+
+routes.get('/',(req,res)=>{
+    res.render('./home');
+})
+
 routes.get('/products',async(req,res)=>{
     try{
     const items=await product.find({});

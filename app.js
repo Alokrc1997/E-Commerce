@@ -15,12 +15,14 @@ const LocalStrategy=require('passport-local');
 const productRoute=require('./routes/product');
 const authRoute=require('./routes/auth');
 const cartRoute=require('./routes/cart');
+const paymentRoute=require('./routes/payment');
 const User=require('./models/user');
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'));
 app.use(express.static(path.join(__dirname,'/public')));
 app.use(express.urlencoded({extended:true}));
+app.use(express.json({extended:true}));
 app.use(methodOverride("_method"));
 
 const sessionConfig={
@@ -71,6 +73,8 @@ mongoose.connect(process.env.DB_URL,
     app.use(productRoute);
     app.use(authRoute);
     app.use(cartRoute);
+    app.use(paymentRoute);
+    
 
 
 

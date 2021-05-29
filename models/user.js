@@ -8,6 +8,15 @@ const userSchema=new mongoose.Schema({
         required:true,
         unique:true
     },
+    phone:{
+        type:String
+    },
+    orders: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Order'
+        }
+    ],
     cart:[{
          type:mongoose.Schema.Types.ObjectId,
          ref:'Product'

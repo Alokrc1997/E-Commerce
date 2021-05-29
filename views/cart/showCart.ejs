@@ -58,11 +58,33 @@
                   <li class="list-group-item"><%= item.name %> -  &#8377 <%= item.price %></li>
                   <% } %> 
 
-                  <li class="list-group-item"><strong>Total Amount - &#8377 <%= amount %></strong> </li>
+                  <!-- <li class="list-group-item"><strong>Total Amount - &#8377 <%= amount %></strong> </li> -->
                 </ul>
                 
+                        <!-- <a href="/orders" class="btn btn-success m-4"> Proceed to Pay</a> -->
+
+                        <div class="mt-2">
+                          <p class="fw-bold">Total Amount :  &#8377; <%=amount%></p>
+                          
+                          <form action="/payment_gateway/payumoney" method="POST">
+                            <input class="amount" type="hidden" name="amount" value="<%=amount%>"/>
+                            <input class="con" type="hidden" name="phone" value="9999999999" />
+                            <input type="hidden" name="service_provider" 
+                             value="payu_paisa"/>
+                            <input type="hidden" class="product" name="productinfo" 
+                             value="educational purpose"/>
+                             
+                             <button class="btn btn-success">Proceed To Pay</button>
+                          </form>
+                        
+                        
+                        </div> 
+                    
+                
               </div>
-              <button class="btn btn-success m-4">Proceed to Pay</button>
+              
+              
+            
         </div>
         
     </div>
