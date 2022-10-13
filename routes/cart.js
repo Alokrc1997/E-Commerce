@@ -1,6 +1,6 @@
 const express=require('express');
 const route=express.Router();
-const {isLogedIn}=require('../middleware')
+const {isLogedIn}=require('../middleware');
 const Product=require('../models/product');
 const User=require('../models/user');
 
